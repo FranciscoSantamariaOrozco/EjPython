@@ -14,3 +14,9 @@ SecondLast = Fruits[-2]
 print(FirstFruit)           # banana
 print(LastFruit)            # lemon
 print(SecondLast)           # mango
+print()
+
+# Desempaquetando items de la lista
+Lst = ['item', 'item2', 'item3', 'item4', 'item5']
+FirstItem, SecondItem, ThirdItem, *Rest = Lst
+print(FirstItem)
