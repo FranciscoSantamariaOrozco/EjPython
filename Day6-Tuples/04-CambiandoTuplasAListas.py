@@ -53,3 +53,16 @@ print("Frutas:", Fruits)
 print("Vegetales:", Vegetables)
 print("Frutas y vegetales:", FruitsAndVegetables)
 print()
+
+
+# Borrando tuplas.
+# No es posible eliminar un solo item de una tupla pero es possible eliminar una tupla usando del.
+
+Tupla1 = ('Item1', 'Item2', 'Item3')
+del Tupla1
+#print(Tupla1)      # File "c:\Users\nekko\Documents\Programación\EjerciciosPython\Day6-Tuples\04-CambiandoTuplasAListas.py", line 64, in <module>
+                    # print(Tupla1)
+                    # NameError: name 'Tupla1' is not defined. Did you mean: 'Tupla'?
+
+Fruits = ('banana', 'orange', 'mango', 'lemon')
+del Fruits
