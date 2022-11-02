@@ -1,0 +1,15 @@
+#Exercises - Day 7
+print()
+
+# Sets
+ITCompanies = {"Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"}
+A = {19, 22, 24, 20, 25, 26}
+B = {22, 19, 24, 25, 26, 24, 25, 24}
+
+# 4- Remueve una de las compañias de ITCompanies
+print("Este es el set original:", ITCompanies)
+ITCompanies.discard("Facebook")
+print("Ahora hemos quitado Facebook", ITCompanies)
+ITCompanies.pop()
+print("Y ahora hemos quitado un item aleatorio con pop", ITCompanies)
+print()
