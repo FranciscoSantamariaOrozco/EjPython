@@ -14,3 +14,9 @@ Numeros = {1, 2, 3 , 4, 5, 6, 7, 8, 9, 10}
 MasNumeros = {0, 2, 4, 6, 8, 10, 12}
 print("Los números que coinciden en ambos sets son:", Numeros.intersection(MasNumeros))
 print()
+
+
+Python = {"P", "Y", "T", "H", "O", "N"}
+Dragon = {"D", "R", "A", "G", "O", "N"}
+print("Las letras coincidentes entre Python y Dragon son:", Python.intersection(Dragon))
+print()
