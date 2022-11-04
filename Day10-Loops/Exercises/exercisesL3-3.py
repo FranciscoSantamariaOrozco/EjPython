@@ -4,7 +4,7 @@ print()
 # L3-3 - Ve a la carpeta DATA y tiliza los datos que encontraras en el archivo "countries_data.py"
 
 #### COUNTRIES_DATA ####
-[
+DatosPaises =[
     {
         "name": "Afghanistan",
         "capital": "Kabul",
@@ -2625,7 +2625,37 @@ print()
     }
 ]
 #### COUNTRIES_DATA_END ####
+"""
+for i in range(len(DatosPaises)):
+    print(DatosPaises[i]["name"])
+"""
 
 # Cual es el número total de lenguajes que hay.
+Lenguas = set()
+for i in range(len(DatosPaises)):
+    Lenguas.update(DatosPaises[i]["languages"])
+print()
+print("El número total de lenguas diferentes que se hablan en estos países es:", len(Lenguas))
+print()
+
 # Encuentra los diez lenguajes mas hablados.
+
+MasHablados = []
+for i in range(len(DatosPaises)):
+        if len(DatosPaises[i]["languages"]) > 1:
+            for ipais in range(len(DatosPaises[i]["languages"])):
+                MasHablados.append(DatosPaises[i]["languages"][ipais])
+                ipais = ipais + 1
+        else:
+            MasHablados.append(DatosPaises[i]["languages"][0])
+
+LengUnicos = set(MasHablados)
+LengUnicos = list(LengUnicos)
+
+Diccionario = {}
+a = 0
+while a < len(LengUnicos):
+    Diccionario
+
+
 # Encuentra los diez países más poblados.
