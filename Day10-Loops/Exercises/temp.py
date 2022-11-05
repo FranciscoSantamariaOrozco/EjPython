@@ -48,8 +48,8 @@ for i in range(len(DatosPaises)):
 LengUnicos = set(MasHablados)
 LengUnicos = list(LengUnicos)
 
-Diccionario = {}
-
+for i in range(len(LengUnicos)):
+    print(LengUnicos[i], MasHablados.count(LengUnicos[i]))
 
 """
 Lenguas = set()

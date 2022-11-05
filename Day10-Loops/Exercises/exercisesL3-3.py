@@ -2625,37 +2625,56 @@ DatosPaises =[
     }
 ]
 #### COUNTRIES_DATA_END ####
-"""
-for i in range(len(DatosPaises)):
-    print(DatosPaises[i]["name"])
-"""
 
 # Cual es el número total de lenguajes que hay.
-Lenguas = set()
-for i in range(len(DatosPaises)):
-    Lenguas.update(DatosPaises[i]["languages"])
+
+TotalIdiomas = []                                                           # Este bucle itera entre la longitud de "DatosPaises" para
+for i in range(len(DatosPaises)):                                           # crear una lista, con todos los idiomas que hay, incluso repetidos.
+        if len(DatosPaises[i]["languages"]) > 1:                            # En caso de que en ese pais se hable mas de un idioma, reitera entre
+            for ipais in range(len(DatosPaises[i]["languages"])):           # la longitud de el elemento "languages" de ese pais para sacar cada
+                TotalIdiomas.append(DatosPaises[i]["languages"][ipais])     # lenguaje uno a uno.
+                ipais = ipais + 1
+        else:
+            TotalIdiomas.append(DatosPaises[i]["languages"][0])             # Si no simplemente añade el único que hay.
+Lenguas = set(TotalIdiomas)                                                 # Lo convertimos en set para descartar los repetidos.
+print("El número total de idiomas únicos que hay es de", len(Lenguas), "idiomas distintos.")
 print()
-print("El número total de lenguas diferentes que se hablan en estos países es:", len(Lenguas))
-print()
+
 
 # Encuentra los diez lenguajes mas hablados.
 
-MasHablados = []
-for i in range(len(DatosPaises)):
-        if len(DatosPaises[i]["languages"]) > 1:
-            for ipais in range(len(DatosPaises[i]["languages"])):
-                MasHablados.append(DatosPaises[i]["languages"][ipais])
-                ipais = ipais + 1
-        else:
-            MasHablados.append(DatosPaises[i]["languages"][0])
+Lenguas = list(Lenguas)                                         # Tomamos el set de Lenguas (únicas) y lo convertimos en lista para
+Lenguas.sort()                                                  # poder trabajar con ella. También aprovechamos para ordenarla.
 
-LengUnicos = set(MasHablados)
-LengUnicos = list(LengUnicos)
+Conteo = []                                                     # Creamos una lista llamada conteo. En esta lista añadiremos los registros
+for i in range(len(Lenguas)):                                   # de cada idioma a la cantidad de paises en las que se habla.
+    Conteo.append({"Idioma":Lenguas[i], "Count":TotalIdiomas.count(Lenguas[i])})
 
-Diccionario = {}
-a = 0
-while a < len(LengUnicos):
-    Diccionario
+def Fcount(e):                                                  # Creamos una pequeña funcion que nos devuelva el valor "count" dentro de la cadena.
+  return e['Count']
+Conteo.sort(key=Fcount, reverse=True)                           # Y ordenamos la lista segun el valor del conteo.
+
+ranking = 1                                                     # Añadimos una variable para el ranking,
+print("Ranking de idiomas más hablados:")
+for i in range(10):                                             # E imprimimos una lista con los 10 primeros de la lista Conteo, 
+        print("Puesto nº", [ranking], Conteo[i])                # que ya estan ordenados para ser los idiomas 
+        ranking = ranking + 1                                   # en los que más paises se hablan.
+print()
 
 
 # Encuentra los diez países más poblados.
+
+PaisesHabitantes = []                                                # Este bucle itera entre la longitud de "DatosPaises" para
+for i in range(len(DatosPaises)):
+    PaisesHabitantes.append({"País":DatosPaises[i]["name"], "Hab.":DatosPaises[i]["population"]})
+
+def Fhabs(f):                                                  # Creamos una pequeña funcion que nos devuelva el valor "Hab." dentro de la cadena.
+  return f['Hab.']
+PaisesHabitantes.sort(key=Fhabs, reverse=True)                           # Y ordenamos la lista segun la cantidad de habitantes.
+
+print("Ranking de países más habitados")
+Ranking = 1
+for i in range(10):
+    print("Posición:", Ranking, PaisesHabitantes[i])
+    Ranking = Ranking + 1
+print()
