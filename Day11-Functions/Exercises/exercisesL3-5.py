@@ -1,9 +1,7 @@
-#Exercises - Day 10
+#Exercises - Day 11
 print()
 
-# L3-3 - Ve a la carpeta DATA y tiliza los datos que encontraras en el archivo "countries_data.py"
-
-#### COUNTRIES_DATA ####
+# L3-4 - Ve a la carpeta data y accede al archivo countries-data.py
 DatosPaises = [
     {
         "name": "Afghanistan",
@@ -2624,57 +2622,55 @@ DatosPaises = [
         "currency": "Botswana pula"
     }
 ]
-#### COUNTRIES_DATA_END ####
+# Crea una función llamada LenguajesMasHablados. Debe devolver los 10 o 20 idiomas más hablados en el mundo, en orden descendente.
+def LenguajesMasHablados(Rango):
+    TotalIdiomas = []                                                           # Este bucle itera entre la longitud de "DatosPaises" para
+    for i in range(len(DatosPaises)):                                           # crear una lista, con todos los idiomas que hay, incluso repetidos.
+            if len(DatosPaises[i]["languages"]) > 1:                            # En caso de que en ese pais se hable mas de un idioma, reitera entre
+                for ipais in range(len(DatosPaises[i]["languages"])):           # la longitud de el elemento "languages" de ese pais para sacar cada
+                    TotalIdiomas.append(DatosPaises[i]["languages"][ipais])     # lenguaje uno a uno.
+                    ipais = ipais + 1
+            else:
+                TotalIdiomas.append(DatosPaises[i]["languages"][0])             # Si no simplemente añade el único que hay.
+    Lenguas = set(TotalIdiomas)                                                 # Lo convertimos en set para descartar los repetidos.
+    Lenguas = list(Lenguas)                                         # Tomamos el set de Lenguas (únicas) y lo convertimos en lista para
+    Lenguas.sort()                                                  # poder trabajar con ella. También aprovechamos para ordenarla.
+    Conteo = []                                                     # Creamos una lista llamada conteo. En esta lista añadiremos los registros
+    for i in range(len(Lenguas)):                                   # de cada idioma a la cantidad de paises en las que se habla.
+        Conteo.append({"Idioma":Lenguas[i], "Count":TotalIdiomas.count(Lenguas[i])})
 
-# Cual es el número total de lenguajes que hay.
+    Conteo.sort(key=Fcount, reverse=True)                           # Y ordenamos la lista segun el valor del conteo.
+    ranking = 1                                                     # Añadimos una variable para el ranking,)         
+    print("Ranking de idiomas más hablados:")
+    for i in range(Rango):                                             # E imprimimos una lista con los 10 primeros de la lista Conteo, 
+            print("Puesto nº", [ranking], Conteo[i])                # que ya estan ordenados para ser los idiomas 
+            ranking = ranking + 1                                   # en los que más paises se hablan.
+# Crea una función llamada PaisesMasPopulares. Debe devolvernos los 10 o 20 países mas habitados en orden descendente.
+def PaisesMasPopulares(Rango):
+    PaisesHabitantes = []                                             
+    for i in range(len(DatosPaises)):
+        PaisesHabitantes.append({"País":DatosPaises[i]["name"], "Hab.":DatosPaises[i]["population"]})
+    PaisesHabitantes.sort(key=Fhabs, reverse=True)                           # Y ordenamos la lista segun la cantidad de habitantes.
+    print("Ranking de países más habitados")
+    Ranking = 1
+    for i in range(Rango):
+        print("Posición:", Ranking, PaisesHabitantes[i])
+        Ranking = Ranking + 1
+    print()
 
-TotalIdiomas = []                                                           # Este bucle itera entre la longitud de "DatosPaises" para
-for i in range(len(DatosPaises)):                                           # crear una lista, con todos los idiomas que hay, incluso repetidos.
-        if len(DatosPaises[i]["languages"]) > 1:                            # En caso de que en ese pais se hable mas de un idioma, reitera entre
-            for ipais in range(len(DatosPaises[i]["languages"])):           # la longitud de el elemento "languages" de ese pais para sacar cada
-                TotalIdiomas.append(DatosPaises[i]["languages"][ipais])     # lenguaje uno a uno.
-                ipais = ipais + 1
-        else:
-            TotalIdiomas.append(DatosPaises[i]["languages"][0])             # Si no simplemente añade el único que hay.
-Lenguas = set(TotalIdiomas)                                                 # Lo convertimos en set para descartar los repetidos.
-print("El número total de idiomas únicos que hay es de", len(Lenguas), "idiomas distintos.")
-print()
+# Interfaz
+def Fcount(Cnt):                                                 # Creamos una pequeña funcion que nos devuelva el valor "count" dentro de la cadena.
+  return Cnt['Count']
+def Fhabs(Hab):                                                  # Creamos una pequeña funcion que nos devuelva el valor "Hab." dentro de la cadena.
+  return Hab['Hab.']
 
-
-# Encuentra los diez lenguajes mas hablados.
-
-Lenguas = list(Lenguas)                                         # Tomamos el set de Lenguas (únicas) y lo convertimos en lista para
-Lenguas.sort()                                                  # poder trabajar con ella. También aprovechamos para ordenarla.
-
-Conteo = []                                                     # Creamos una lista llamada conteo. En esta lista añadiremos los registros
-for i in range(len(Lenguas)):                                   # de cada idioma a la cantidad de paises en las que se habla.
-    Conteo.append({"Idioma":Lenguas[i], "Count":TotalIdiomas.count(Lenguas[i])})
-
-def Fcount(e):                                                  # Creamos una pequeña funcion que nos devuelva el valor "count" dentro de la cadena.
-  return e['Count']
-Conteo.sort(key=Fcount, reverse=True)                           # Y ordenamos la lista segun el valor del conteo.
-
-ranking = 1                                                     # Añadimos una variable para el ranking,
-print("Ranking de idiomas más hablados:")
-for i in range(10):                                             # E imprimimos una lista con los 10 primeros de la lista Conteo, 
-        print("Puesto nº", [ranking], Conteo[i])                # que ya estan ordenados para ser los idiomas 
-        ranking = ranking + 1                                   # en los que más paises se hablan.
-print()
-
-
-# Encuentra los diez países más poblados.
-
-PaisesHabitantes = []
-for i in range(len(DatosPaises)):
-    PaisesHabitantes.append({"País":DatosPaises[i]["name"], "Hab.":DatosPaises[i]["population"]})
-
-def Fhabs(f):
-  return f['Hab.']
-PaisesHabitantes.sort(key=Fhabs, reverse=True)
-
-print("Ranking de países más habitados")
-Ranking = 1
-for i in range(10):
-    print("Posición:", Ranking, PaisesHabitantes[i])
-    Ranking = Ranking + 1
-print()
+Rango = input("Introduce el rango de puestos a revisar(10 min, 20 max): ")
+Rango = int(Rango)
+if Rango > 20:
+    print("El rango es demasiado alto (20 max)")
+elif Rango < 10:
+    print("El rango es demasiado bajo (10 min)")
+else:
+    print(LenguajesMasHablados(Rango))
+    print()
+    print(PaisesMasPopulares(Rango))
