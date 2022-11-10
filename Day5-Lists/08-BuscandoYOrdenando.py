@@ -54,3 +54,9 @@ print("Lista de frutas ordenada: ", sorted(Fruits))
 print("Lista de frutas ord. invers.: ", sorted(Fruits,reverse=True))
 print("Lista original: ", Fruits)
 print()
+
+
+# Flattening a three dimensional array
+list_of_lists = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flattened_list = [ number for row in list_of_lists for number in row]
+print(flattened_list)    # [1, 2, 3, 4, 5, 6, 7, 8, 9]
