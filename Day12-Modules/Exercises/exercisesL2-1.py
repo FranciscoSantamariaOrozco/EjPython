@@ -16,7 +16,7 @@ def ListaColoresHexa():
             RandomNum = choice(Valores)
             RandomNum = str(RandomNum)
             ID = ID + RandomNum
-        print("Color", i, ":", ID)
+        #print("Color", i, ":", ID)
         Resultado.append(ID)
     print(Resultado)
 
