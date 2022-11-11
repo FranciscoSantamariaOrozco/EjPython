@@ -19,7 +19,7 @@ print()
 
 # (i, 1, i, i*i, i*i*i, i*i*i*i, i*i*i*i*i, i*i*i*i*i*i, i*i*i*i*i*i*i)
 
-
+"""
 def Cuadrados(x):
     ListCuadrados = x
     ListCuadrados = str(ListCuadrados)
@@ -28,5 +28,23 @@ def Cuadrados(x):
     return ListCuadrados
 print(Cuadrados(2))
 
+ListTup = [i for i in range(10)]
+print(ListTup)
+"""
+"""
+ListTup = [(i, 1, i, i*i, i*i*i, i*i*i*i, i*i*i*i*i, i*i*i*i*i*i, i*i*i*i*i*i*i) for i in range(11)]
+print(ListTup)
+"""
 
+"""
+ListTup = [[(i),[(i ** e) for e in range(6)]] for i in range(11)]
+print(ListTup)
+"""
 
+ListTup = [[i, [(i ** e) for e in range(6)]] for i in range(11)]
+print(ListTup)
+print()
+
+ListTup= [number for row in ListTup for number in row]
+print(ListTup)
+print()
