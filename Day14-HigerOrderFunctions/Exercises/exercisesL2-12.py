@@ -201,10 +201,10 @@ countries = [
 ]
 
 def CategorizarPaises(Pais):
-        if len(Pais) >= 10:
-            if Pais.count("ia") >= 1:
-                return True
-            return False
+    if len(Pais) >= 10:
+        if Pais.count("ia") >= 1:
+            return True
+        return False
 
 PaisesLand = filter(CategorizarPaises, countries)
 print(list(PaisesLand))
